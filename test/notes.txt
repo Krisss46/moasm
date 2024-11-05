@@ -1,0 +1,40 @@
+entry point at 0x1060
+section offset at 0x3690
+program name offset is b9
+shstrtab offset is 3574
+
+use 0x10 on sh_addralign for .text
+
+
+Element     Addr    size
+-------------------------
+ELFHeader   0x40    64
+PHtHeader   0x78    56
+S.null      0xB8    64
+S.text      0xF8    64
+S.rodata    0x138   64
+S.tab       0x178   64
+.text       0x1A2   42
+.rodata     0x1AF   13
+Names       0x1C8   25
+------------------------
+
+
+mov rax, 1          ; syscall number for sys_write
+mov rdi, 1          ; file descriptor 1 (standard output)
+mov rsi, message    ; pointer to the message to print
+mov rdx, length     ; length of the message
+syscall             ; invoke the syscall
+
+B8: RAX
+B9: RCX
+BA: RDX
+BB: RBX
+BC: RSP
+BD: RBP
+BE: RSI
+BF: RDI
+0F05: syscall
+
+
+Extra info test text
