@@ -37,14 +37,13 @@ class dataStructs{
             string p_type[4] = {"00", "00", "00", "00"};
             string p_flags64[4] = {"00", "00", "00", "00"}; // 64bit position
             string p_offset[8] = {"00", "00", "00", "00", "00", "00", "00", "00"};
-            string p_vaddr[8] = {"00", "00", "00", "08", "00", "00", "00", "00"};
-            string p_paddr[8] = {"00", "00", "00", "08", "00", "00", "00", "00"};
+            string p_vaddr[8] = {"00", "00", "00", "00", "00", "00", "00", "00"};
+            string p_paddr[8] = {"00", "00", "00", "00", "00", "00", "00", "00"};
             string p_filesz[8] = {"00", "00", "00", "00", "00", "00", "00", "00"};
             string p_memsz[8] = {"00", "00", "00", "00", "00", "00", "00", "00"};
             string p_flags32[4] = {"00", "00", "00", "00"}; // 32bit position
             string p_align[8] = {"00", "00", "00", "00", "00", "00", "00", "00"};
         };
-        PHt pht = new PHt;
 
         struct SHt{
             string sh_name[4] = {"00", "00", "00", "00"};
@@ -91,18 +90,18 @@ class dataStructs{
             return ans;
         }
 
-        string buildPHt() {
+        string buildPHt(PHt item) {
                 string ans = "";
 
                 if (ELFHeader.e_ident_CLASS[0] == "02") {
-                    for (string item : PHt.p_type) ans += item;
-                    for (string item : PHt.p_flags64) ans += item;
-                    for (string item : PHt.p_offset) ans += item;
-                    for (string item : PHt.p_vaddr) ans += item;
-                    for (string item : PHt.p_paddr) ans += item;
-                    for (string item : PHt.p_filesz) ans += item;
-                    for (string item : PHt.p_memsz) ans += item;
-                    for (string item : PHt.p_align) ans += item; // 0x38 ending
+                    for (string item : item.p_type) ans += item;
+                    for (string item : item.p_flags64) ans += item;
+                    for (string item : item.p_offset) ans += item;
+                    for (string item : item.p_vaddr) ans += item;
+                    for (string item : item.p_paddr) ans += item;
+                    for (string item : item.p_filesz) ans += item;
+                    for (string item : item.p_memsz) ans += item;
+                    for (string item : item.p_align) ans += item; // 0x38 ending
                 } else {
                     // add 32bit construct here
                     // 0x20 ending
@@ -110,20 +109,20 @@ class dataStructs{
                 return ans;
             }
 
-        string buildSHt() { //later huh
+        string buildSHt(SHt item) { //later huh
             string ans = "";
 
             if (ELFHeader.e_ident_CLASS[0] == "02") {
-                for (string item : SHt.sh_name) ans += item;
-                for (string item : SHt.sh_type) ans += item;
-                for (string item : SHt.sh_flags) ans += item;
-                for (string item : SHt.sh_addr) ans += item;
-                for (string item : SHt.sh_offset) ans += item;
-                for (string item : SHt.sh_size) ans += item;
-                for (string item : SHt.sh_link) ans += item;
-                for (string item : SHt.sh_info) ans += item;
-                for (string item : SHt.sh_addralign) ans += item;
-                for (string item : SHt.sh_entsize) ans += item; // 0x40
+                for (string item : item.sh_name) ans += item;
+                for (string item : item.sh_type) ans += item;
+                for (string item : item.sh_flags) ans += item;
+                for (string item : item.sh_addr) ans += item;
+                for (string item : item.sh_offset) ans += item;
+                for (string item : item.sh_size) ans += item;
+                for (string item : item.sh_link) ans += item;
+                for (string item : item.sh_info) ans += item;
+                for (string item : item.sh_addralign) ans += item;
+                for (string item : item.sh_entsize) ans += item; // 0x40
             } else {
                 // add 32bit construct here
                 // 0x28 ending
