@@ -10,6 +10,9 @@ int main() {
 
     hex_dump << DS.buildELFHeader();
 
+    DS.PHt ass = new DS.PHt;
+
+    ass.p_type[3] = "";
     
 
     hex_dump.close();
