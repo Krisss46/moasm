@@ -43,8 +43,8 @@ int main() {
     stext.sh_type[0] = "01"; // program data
     stext.sh_flags[0] = "06"; // takes memory and executable
     stext.sh_addr[0] = "78"; // Virtual address of section in memory
-    stext.sh_addr[1] = "01"; // Virtual address of section in memory
-    stext.sh_addr[3] = "08"; // Virtual address of section in memory
+    stext.sh_addr[1] = "01";
+    stext.sh_addr[3] = "08";
     stext.sh_offset[0] = "78"; // offset of section names table
     stext.sh_offset[1] = "01";
     stext.sh_size[0] = "1D"; // size of section names table
@@ -55,10 +55,10 @@ int main() {
     rodata.sh_type[0] = "01"; // program data
     rodata.sh_flags[0] = "02"; // takes memory and executable
     rodata.sh_addr[0] = "95"; // Virtual address of section in memory
-    rodata.sh_addr[1] = "01"; // Virtual address of section in memory
-    rodata.sh_addr[3] = "08"; // Virtual address of section in memory
+    rodata.sh_addr[1] = "01";
+    rodata.sh_addr[3] = "08";
     rodata.sh_offset[0] = "95"; // offset of section names table
-    rodata.sh_offset[1] = "01"; // offset of section names table
+    rodata.sh_offset[1] = "01";
     rodata.sh_size[0] = "0D"; // size of section names table
     hex_dump << DS.buildSHt(rodata); // 0x138
 
@@ -70,7 +70,7 @@ int main() {
     shstrtab.sh_size[0] = "19"; // size of section names table
     hex_dump << DS.buildSHt(shstrtab); // 0x178
 
-    hex_dump << "b801000000 bf01000000 4889f6  ba0d000000 0f05 b860000000 31ff 0f05"; // print hello world code 0x195  29
+    hex_dump << "b801000000 bf01000000 4889f6  ba0d000000 0f05 b860000000 31ff 0f05"; // code 0x195  29
     hex_dump << "48 65 6c 6c 6f 2c 20 57 6f 72 6c 64 21"; // hello world 0x1A2  13
     hex_dump << "00 2E736873747274616200 2E7465787400 2E726F6461746100"; // section names 0x1BB  25
 
