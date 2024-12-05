@@ -59,7 +59,7 @@ class dataStructs{
         };
         ///////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////
-        string buildELFHeader() { // constructs ELFHeader and 
+        string buildELFHeader() { // constructs ELFHeader
             string ans = "";
 
             if (ELFHeader.e_ident_CLASS[0] == "02") {
