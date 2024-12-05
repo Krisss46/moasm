@@ -90,29 +90,29 @@ int main() {
     dataStructs::PHt text;
     text.p_type[0] = "01";
     text.p_flags64[0] = "05";
-    text.p_offset[0] = "78";
+    text.p_offset[0] = "B0";
     text.p_vaddr[2] = "40";
     text.p_paddr[2] = "40";
-    text.p_filesz[0] = "33";
-    text.p_memsz[0] = "33";
-    text.p_align[0] = "10";
+    text.p_filesz[0] = "39";
+    text.p_memsz[0] = "39";
+    text.p_align[1] = "10";
     hex_dump << DS.buildPHt(text);
 
     dataStructs::PHt data;
-    text.p_type[0] = "01";
-    text.p_flags64[0] = "04";
-    text.p_offset[0] = "AB";
-    text.p_vaddr[2] = "60";
-    text.p_paddr[2] = "60";
-    text.p_filesz[0] = "0D";
-    text.p_memsz[0] = "0D";
-    text.p_align[0] = "10";
+    data.p_type[0] = "01";
+    data.p_flags64[0] = "06";
+    data.p_offset[0] = "E6";
+    data.p_vaddr[2] = "60";
+    data.p_paddr[2] = "60";
+    data.p_filesz[0] = "0D";
+    data.p_memsz[0] = "0D";
+    data.p_align[1] = "10";
     hex_dump << DS.buildPHt(data);
     //////////////////////////////////////////////
 
 
     hex_dump << "48B80100000000000000 48BF0100000000000000 48BE0000600000000000 48BA0D00000000000000 0F05"; // code 42 
-    hex_dump << "31ffb83c0000000f05"; // exit call 9
+    hex_dump << "48B83600000000000000 4831FF 0F05"; // exit call 15
     hex_dump << "48656c6c6f2c20576f726c6421"; // hello world 13 
     //hex_dump << "00 2E736873747274616200 2E7465787400 2E726F6461746100"; // section names 25 
 
@@ -125,10 +125,11 @@ Group 2
 Elements    Addr    size  (Addr based on start point)
 ------------------------
 ELFHeader   0x00    64
-PHtHeader   0x40    56
-.text       0x78    51
-.data       0xAB    13
-END         0xB8
+textHeader  0x40    56
+dataHeader  0x78
+.text       0xB0    57
+.data       0xE9    13
+END         0xF6
 ------------------------
 
 Group 1
