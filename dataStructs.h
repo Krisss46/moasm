@@ -15,7 +15,7 @@ class dataStructs{
             string e_ident_CLASS[1] = {"00"}; //
             string e_ident_DATA[1] = {"01"}; 
             string e_ident_VERSION[1] = {"01"};
-            string e_ident_OSABI[1] = {"00"};
+            string e_ident_OSABI[1] = {"03"};
             string e_ident_ABIVERSION[1] = {"00"};
             string e_ident_PAD[7] = {"00", "00", "00", "00", "00", "00", "00"}; 
             string e_type[2] = {"00", "00"}; //
