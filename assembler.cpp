@@ -82,6 +82,7 @@ int main() {
     DS.ELFHeader.e_type[0] = "02";
     DS.ELFHeader.e_machine[0] = "3E";
     DS.ELFHeader.e_entry[2] = "40";
+    DS.ELFHeader.e_entry[0] = "B0";
     DS.ELFHeader.e_ehsize[0] = "40";
     DS.ELFHeader.e_phentsize[0] = "38";
     DS.ELFHeader.e_phnum[0] = "02";
@@ -92,7 +93,9 @@ int main() {
     text.p_flags64[0] = "05";
     text.p_offset[0] = "B0";
     text.p_vaddr[2] = "40";
+    text.p_vaddr[0] = "B0";
     text.p_paddr[2] = "40";
+    text.p_paddr[0] = "B0";
     text.p_filesz[0] = "39";
     text.p_memsz[0] = "39";
     text.p_align[1] = "10";
@@ -101,9 +104,11 @@ int main() {
     dataStructs::PHt data;
     data.p_type[0] = "01";
     data.p_flags64[0] = "06";
-    data.p_offset[0] = "E6";
+    data.p_offset[0] = "E9";
     data.p_vaddr[2] = "60";
+    data.p_vaddr[0] = "E9";
     data.p_paddr[2] = "60";
+    data.p_paddr[0] = "E9";
     data.p_filesz[0] = "0D";
     data.p_memsz[0] = "0D";
     data.p_align[1] = "10";
@@ -111,7 +116,7 @@ int main() {
     //////////////////////////////////////////////
 
 
-    hex_dump << "48B80100000000000000 48BF0100000000000000 48BE0000600000000000 48BA0D00000000000000 0F05"; // code 42 
+    hex_dump << "48B80100000000000000 48BF0100000000000000 48BEE900600000000000 48BA0D00000000000000 0F05"; // code 42 
     hex_dump << "48B83600000000000000 4831FF 0F05"; // exit call 15
     hex_dump << "48656c6c6f2c20576f726c6421"; // hello world 13 
     //hex_dump << "00 2E736873747274616200 2E7465787400 2E726F6461746100"; // section names 25 
