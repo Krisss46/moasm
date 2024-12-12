@@ -37,4 +37,8 @@ BF: RDI
 0F05: syscall
 
 
+<<<<<<< HEAD
 Test msg
+=======
+Extra info test text
+>>>>>>> main

@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Set the project name and version
+project(MOASM VERSION 1.0)
+
+# Set the C++ standard
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Include the directory containing the header files
+include_directories(${CMAKE_SOURCE_DIR})
+
+# Define the executable to be built
+add_executable(assembler.bin assembler.cpp)
+
+# Ensure the shell script is executable (important for UNIX-like systems)
+add_custom_command(TARGET assembler.bin POST_BUILD
+    COMMAND chmod +x ${CMAKE_BINARY_DIR}/moasm.sh
+    COMMENT "Making moasm.sh executable"
+)
+
+# Copy the shell script and settings file to the build directory
+configure_file(${CMAKE_SOURCE_DIR}/moasm.sh ${CMAKE_BINARY_DIR}/moasm.sh COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/settings.txt ${CMAKE_BINARY_DIR}/settings.txt COPYONLY)
+
+# Optionally, add a target to package everything in a ZIP file (useful for distribution)
+# This step creates a zip of the executable, the shell script, and the settings file
+set(TARGET_PACKAGE ${CMAKE_BINARY_DIR}/moasm_package.zip)
+add_custom_target(package ALL
+    COMMAND ${CMAKE_COMMAND} -E tar "cf" ${TARGET_PACKAGE} --format=zip
+    ${CMAKE_BINARY_DIR}/assembler.bin
+    ${CMAKE_BINARY_DIR}/moasm.sh
+    ${CMAKE_BINARY_DIR}/settings.txt
+    COMMENT "Packaging all files into a single zip archive"
+)
