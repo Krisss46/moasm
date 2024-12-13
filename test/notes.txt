@@ -38,7 +38,11 @@ BF: RDI
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 test message
 =======
 Extra info test text
 >>>>>>> 4dc8a9b (Tech Demo)
+=======
+test message
+>>>>>>> f956b37 (test)
